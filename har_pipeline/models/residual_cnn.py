@@ -16,7 +16,7 @@ def residual_block(x, filters, kernel_size):
     x = tf.keras.layers.Activation('relu')(x)
     return x
 
-def build_model(input_shape, num_classes):
+def build_model(input_shape, num_classes) -> tf.keras.Model:
     """
     Builds the Residual CNN model for time series classification.
 
