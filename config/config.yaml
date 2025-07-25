@@ -1,0 +1,25 @@
+dataset:
+  path: "data/UCI HAR Dataset/"
+  # The time window size and overlap are fixed in the original dataset.
+  # Raw signals are divided into windows of 128 readings (2.56 seconds).
+  time_steps: 128
+  signals:
+    - total_acc_x
+    - total_acc_y
+    - total_acc_z
+    - body_acc_x
+    - body_acc_y
+    - body_acc_z
+    - body_gyro_x
+    - body_gyro_y
+    - body_gyro_z
+
+training:
+  # Hyperparameters and config for training
+  epochs: 30
+  batch_size: 64
+  learning_rate: 0.001
+  model_dir: "./saved_models"
+  logs_dir: "./logs"
+  seed: 42
+  validation_percentage: 0.2

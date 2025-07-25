@@ -31,7 +31,7 @@ pip install -r requirements-test.txt
 Download the [UCI HAR Dataset](https://archive.ics.uci.edu/ml/datasets/human+activity+recognition+using+smartphones) and place it in:
 
 ```
-data/UCI_HAR/
+data/UCI HAR Dataset/
 ```
 
 The folder should contain the `train/` and `test/` subdirectories with the raw `.txt` files like `X_train.txt`, `y_train.txt`, etc.
@@ -39,7 +39,7 @@ The folder should contain the `train/` and `test/` subdirectories with the raw `
 To preprocess the dataset:
 
 ```bash
-python preprocess.py
+python preprocess_har.py
 ```
 
 This script will normalize the data and optionally save the processed files as `.npy` for reuse in training scripts.
@@ -81,11 +81,12 @@ har-pipeline/
 ├── config/
 │   └── config.yaml              # Training configuration
 ├── data/
-│   └── UCI_HAR/                 # Contains .npy files
+│   └── UCI HAR Dataset/         # Contains the original dataset from UCI
 ├── models/
 │   └── residual_cnn.py          # Model architecture
 ├── scripts/
-│   └── preprocess_har.py        # Optional data prep script
+│   |── preprocess_har.py        # Data prep script
+|   └── utils.py                 # Utils script
 ├── timeseries/
 │   ├── train_standard_loop.py   # Training with model.fit()
 │   ├── train_custom_loop.py     # Training with GradientTape
