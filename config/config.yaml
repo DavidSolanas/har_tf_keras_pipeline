@@ -23,3 +23,6 @@ training:
   logs_dir: "./logs"
   seed: 42
   validation_percentage: 0.2
+  patience: 10 # Example: stop if val_acc doesn't improve for 10 epochs
+  checkpoint_save_freq: 3 # Example: save resume checkpoint every 3 epochs
+  max_checkpoints: 3 # Example: keep last 3 checkpoints
