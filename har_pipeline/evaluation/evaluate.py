@@ -7,12 +7,14 @@ import argparse
 import yaml
 import os
 
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Evaluate saved HAR model")
     parser.add_argument('--config', default='config.yaml', help='Path to config YAML file')
     parser.add_argument('--model_path', default=None, help='Path to saved model or checkpoint (h5 or checkpoint prefix)')
     parser.add_argument('--custom_loop_model', action='store_true', help='Use custom training loop model format')
     return parser.parse_args()
+
 
 def extratct_labels(test_ds: tf.data.Dataset, convert_to_single_labels=True) -> np.ndarray:
     """
@@ -24,10 +26,10 @@ def extratct_labels(test_ds: tf.data.Dataset, convert_to_single_labels=True) -> 
     """
     # Extract true labels from test_ds
     y_true_list = []
-    for _, labels in test_ds: # Iterates through batches of (features, labels)
-        y_true_list.append(labels.numpy()) # Converts TensorFlow tensor to NumPy array
-    y_true = np.concatenate(y_true_list, axis=0) # Concatenates all batch labels into one array
-    
+    for _, labels in test_ds:  # Iterates through batches of (features, labels)
+        y_true_list.append(labels.numpy())  # Converts TensorFlow tensor to NumPy array
+    y_true = np.concatenate(y_true_list, axis=0)  # Concatenates all batch labels into one array
+
     if convert_to_single_labels:
         # If your labels are one-hot encoded, convert them back to single labels
         # The UCI HAR dataset typically has integer labels 1-6, which are often
@@ -36,6 +38,7 @@ def extratct_labels(test_ds: tf.data.Dataset, convert_to_single_labels=True) -> 
             y_true = np.argmax(y_true, axis=1)
     
     return y_true
+
 
 def main():
     args = parse_args()
