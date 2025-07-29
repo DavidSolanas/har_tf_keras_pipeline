@@ -9,7 +9,7 @@ import tensorflow as tf
 
 def load_signal_file(filepath):
     """Loads a signal file (e.g., 'body_acc_x_train.txt')."""
-    return pd.read_csv(filepath, sep='\s+', header=None).values
+    return pd.read_csv(filepath, sep=r'\s+', header=None).values
 
 def load_signals(signal_list, data_path, label):
     """Loads all inertial signals for a set (train/test).
@@ -63,7 +63,7 @@ def load_dataset(dataset_path, signals: list):
     y_test = load_signal_file(test_labels_path)
 
     # Load activity names
-    activity_labels_df = pd.read_csv(activity_labels_path, delim_whitespace=True, header=None)
+    activity_labels_df = pd.read_csv(activity_labels_path, sep=r'\s+', header=None)
     activity_labels = activity_labels_df[1].tolist()
     print(f"Detected activities: {activity_labels}")
 
