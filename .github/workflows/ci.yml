@@ -23,6 +23,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-test.txt
 
+      - name: Install your har_pipeline package
+        run: |
+          pip install -e .
+
       #- name: Lint code with flake8
       #  run: |
       #    flake8 .
